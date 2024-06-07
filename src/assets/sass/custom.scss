@@ -1,0 +1,76 @@
+// transition animations
+
+.slide-in-enter-active,
+.slide-in-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-in-enter-from {
+  opacity: 0;
+  transform: translateX(50%);
+}
+
+.slide-in-leave-to {
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.fade-in-enter-active,
+.fade-in-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.fade-in-enter-from {
+  opacity: 0.5;
+  transform: translateY(-20px);
+}
+
+.fade-in-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+// PrimeVue
+
+.p-autocomplete {
+  width: 100% !important;
+}
+.p-autocomplete-input {
+  width: 100% !important;
+}
+
+.p-calendar {
+  width: 100%;
+}
+
+.p-multiselect {
+  width: 100% !important;
+}
+
+// forms
+
+.separator-form {
+  height: 0;
+  margin-top: 2.5rem !important;
+  margin-bottom: 1.75rem !important;
+}
+
+.separator.separator-dashed {
+  border-bottom: 1px dashed #050505;
+}
+
+.separator-title {
+  font-size: 1.5rem;
+  margin: 2rem 0;
+}
+
+// @for $i from 1 through 100 {
+//   .c-w-#{$i} {
+//     width: calc(#{$i}% - 0.5rem);
+//   }
+// }
+
+.c-w-25 {
+  width: calc(25% - 0.5rem) !important;
+  min-width: 200px;
+}
