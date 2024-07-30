@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<{
   aspectRatio?: number;
   imgWidth?: number;
 }>(), {
-  aspectRatio: 1 / 1,
+  aspectRatio: 5 / 6,
 });
 
 defineExpose({
