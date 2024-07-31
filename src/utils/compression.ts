@@ -1,7 +1,7 @@
 export async function compressImageToFile(
   file: File | Blob,
   maxDimension: number = 1200, // Default maximum dimension for either width or height
-  quality: number = 0.9 // Default quality reduction for significant file size decrease
+  quality: number = 0.7 // Default quality reduction for significant file size decrease
 ): Promise<File> {
   if (!file.type.startsWith("image/")) {
     throw new Error("File is not an image");
