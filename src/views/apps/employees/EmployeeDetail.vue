@@ -119,7 +119,6 @@
                   </Field>
                   <ErrorMessage class="invalid-feedback" name="employeeOfficeHours" />
                 </div>
-                <Loading v-if="loading"/>
                 <div class="row mb-5">
                   <div id="cropperWidthTemplate" class="col-md-6 fv-row">
                     <label class="fs-5 fw-semobold mb-2">{{ $t("photo") }}</label>
@@ -132,6 +131,7 @@
                         width="300px"
                       />
                     </div>
+                    <Loading v-if="loading"/>
                   </div>
                   <div class="col-md-6 fv-row">
                     <label class="fs-5 fw-semobold mb-2">{{ $t("new_photo") }}</label>
@@ -197,10 +197,11 @@ const submit = async (values, { setErrors }) => {
     .then((response) => {
       alertStore.setAlertByRes(response)
       loading.value = true;
+      let oldEmployeeImgUrl = employeeImgUrl.value;
+      employeeImgUrl.value = null;
       setTimeout(() => {
         loading.value = false;
-        employeeImgUrl.value = employeeImgUrl.value?.split('?')[0] + "?time=" + Date.now();
-        console.log(employeeImgUrl.value);
+        employeeImgUrl.value = oldEmployeeImgUrl?.split('?')[0] + "?time=" + Date.now();
       }, 3000);
     })
     .catch(({ response }) => {

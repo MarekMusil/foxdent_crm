@@ -82,7 +82,7 @@
                   </Field>
                   <ErrorMessage class="invalid-feedback" name="slideText" />
                 </div>
-                <Loading v-if="loading"/>
+                
                 <div class="row mb-5">
                   <div id="cropperWidthTemplate" class="col-md-6 fv-row">
                     <label class="fs-5 fw-semobold mb-2">{{ $t("photo") }}</label>
@@ -95,6 +95,7 @@
                         width="500px"
                       />
                     </div>
+                    <Loading v-if="loading"/>
                   </div>
                   <div class="col-md-5 fv-row">
                     <label class="fs-5 fw-semobold mb-2">{{ $t("new_photo") }}</label>
@@ -161,10 +162,11 @@ const submit = async (values, { setErrors }) => {
     .then((response) => {
       alertStore.setAlertByRes(response);
       loading.value = true;
+      let oldSlideImgUrl = slideImgUrl.value;
+      slideImgUrl.value = null;
       setTimeout(() => {
         loading.value = false;
-        slideImgUrl.value = slideImgUrl.value?.split('?')[0] + "?time=" + Date.now();
-        console.log(slideImgUrl.value);
+        slideImgUrl.value = oldSlideImgUrl?.split('?')[0] + "?time=" + Date.now();
       }, 4000);
     })
     .catch(({ response }) => {
