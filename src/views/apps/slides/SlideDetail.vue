@@ -82,7 +82,7 @@
                   </Field>
                   <ErrorMessage class="invalid-feedback" name="slideText" />
                 </div>
-
+                <Loading v-if="loading"/>
                 <div class="row mb-5">
                   <div id="cropperWidthTemplate" class="col-md-6 fv-row">
                     <label class="fs-5 fw-semobold mb-2">{{ $t("photo") }}</label>
@@ -133,11 +133,14 @@ import { onMounted, reactive, ref } from "vue";
 import { setProperties } from "@/utils/update";
 import TextEditor from "@/components/forms/TextEditor.vue";
 import FormCropper from "@/components/forms/FormCropper.vue";
+import Loading from "@/components/datatable/table-partials/LoadingTransparent.vue";
 
 const store = useOptionsStore();
 const alertStore = useAlertStore();
 const route = useRoute();
 const routeId = route.params.id as string;
+
+const loading = ref(false);
 
 const itemValues = ref<any[]>([]);
 const initialValues = reactive<{ [key: string]: any }>({});
@@ -157,6 +160,12 @@ const submit = async (values, { setErrors }) => {
   })
     .then((response) => {
       alertStore.setAlertByRes(response);
+      loading.value = true;
+      setTimeout(() => {
+        loading.value = false;
+        slideImgUrl.value = slideImgUrl.value?.split('?')[0] + "?time=" + Date.now();
+        console.log(slideImgUrl.value);
+      }, 4000);
     })
     .catch(({ response }) => {
       alertStore.setAlertByRes(response);
@@ -168,7 +177,7 @@ onMounted(async () => {
   ApiService.get(`/slides/${routeId}`)
     .then(({ data }) => {
       setProperties(data.data, initialValues);
-      slideImgUrl.value = data.data.slide.photoImgUrl;
+      slideImgUrl.value = data.data.slide.photoImgUrl + "?time=" + Date.now();;
       Object.assign(initialValues, {
         slideText: data.data.slide.text.html
       });
