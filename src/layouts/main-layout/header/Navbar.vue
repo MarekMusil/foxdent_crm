@@ -1,35 +1,6 @@
 <template>
   <!--begin::Navbar-->
   <div class="app-navbar flex-shrink-0">
-    <!--begin::Activities-->
-    <div class="app-navbar-item ms-1 ms-md-4">
-      <!--begin::Drawer toggle-->
-      <div
-        class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px"
-        id="kt_activities_toggle"
-      >
-        <KTIcon icon-name="messages" icon-class="fs-2" />
-      </div>
-      <!--end::Drawer toggle-->
-    </div>
-    <!--end::Activities-->
-    <!--begin::Chat-->
-    <div class="app-navbar-item ms-1 ms-md-4">
-      <!--begin::Menu wrapper-->
-      <div
-        class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px position-relative"
-        id="kt_drawer_chat_toggle"
-        @click="store.newNotification = false"
-      >
-        <KTIcon icon-name="message-text-2" icon-class="fs-2" />
-        <span
-          v-if="store.newNotification"
-          class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"
-        ></span>
-      </div>
-      <!--end::Menu wrapper-->
-    </div>
-    <!--end::Chat-->
     <!--begin::Theme mode-->
     <!--begin::User menu-->
     <div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
@@ -64,7 +35,6 @@
 </template>
 
 <script lang="ts" setup>
-import KTNotificationMenu from "@/layouts/main-layout/menus/NotificationsMenu.vue";
 // import KTQuickLinksMenu from "@/layouts/main-layout/menus/QuickLinksMenu.vue";
 import KTUserMenu from "@/layouts/main-layout/menus/UserAccountMenu.vue";
 import { useOptionsStore } from "@/stores/options";
