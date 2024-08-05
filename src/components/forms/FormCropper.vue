@@ -28,6 +28,8 @@ const photoCropperRef = ref<InstanceType<typeof Cropper> | null>(null);
 const maxWidth = ref(1000);
 const maxHeight = ref(1000);
 
+const emit = defineEmits(['upload-success']);
+
 function selectFile(e: FileUploadSelectEvent) {
   const newFile = e.files[0] as File;
   file.value = newFile;
@@ -65,6 +67,7 @@ async function uploadFiles() {
   formData.append("file", file.value);
   try {
     const response = await ApiService.post(props.uploadPath, formData);
+    emit('upload-success', response); // Emit the event with response data
     return response;
   } catch (error) {
     console.error(error);

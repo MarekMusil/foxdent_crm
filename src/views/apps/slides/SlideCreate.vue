@@ -80,6 +80,35 @@
                   </Field>
                   <ErrorMessage class="invalid-feedback" name="slideText" />
                 </div>
+
+                <div class="d-flex flex-column mb-5 fv-row">
+                  <label class="required fs-5 fw-semobold mb-2">{{ $t("active") }}</label>
+                  <div
+                    class="d-flex align-items-center gap-4 form-control"
+                    :class="errors.slideActive ? 'is-invalid' : ''"
+                  >
+                    <div class="form-check form-check-custom form-check-solid gap-2">
+                      <label for="slideActive" class="me-1">{{ $t("option_yes") }}</label>
+                      <Field
+                        class="form-check-input"
+                        name="slideActive"
+                        type="radio"
+                        :value="1"
+                      />
+                    </div>
+
+                    <div class="form-check form-check-custom form-check-solid gap-2">
+                      <label for="slideActive" class="me-1">{{ $t("option_no") }}</label>
+                      <Field
+                        class="form-check-input"
+                        name="slideActive"
+                        type="radio"
+                        :value="0"
+                      />
+                    </div>
+                  </div>
+                  <ErrorMessage class="invalid-feedback" name="slideActive" />
+                </div>
           </div>
         </div>
         

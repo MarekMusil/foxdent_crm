@@ -404,6 +404,7 @@ const messages = {
     witness: "Svědek ŠU",
     year: "Rok",
     zip: "PSČ",
+    active: "Aktivní",
 
     option_all: "Vše",
     option_yes: "Ano",
@@ -526,7 +527,11 @@ const messages = {
     rank: "Pořadí",
     content: "Obsah",
     office_hours_stomatology: "Otevírací doba - Stomatologie",
-    office_hours_dental_hygiene: "Otevírací doba - Dentální hygiena"
+    office_hours_dental_hygiene: "Otevírací doba - Dentální hygiena",
+
+    all: "Vše",
+    inactive: "Neaktivní",
+    choose_service: "Vyberte službu",
   },
 };
 

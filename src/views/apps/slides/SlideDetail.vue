@@ -82,6 +82,35 @@
                   </Field>
                   <ErrorMessage class="invalid-feedback" name="slideText" />
                 </div>
+
+                <div class="d-flex flex-column mb-5 fv-row">
+                  <label class="required fs-5 fw-semobold mb-2">{{ $t("active") }}</label>
+                  <div
+                    class="d-flex align-items-center gap-4 form-control"
+                    :class="errors.slideActive ? 'is-invalid' : ''"
+                  >
+                    <div class="form-check form-check-custom form-check-solid gap-2">
+                      <label for="slideActive" class="me-1">{{ $t("option_yes") }}</label>
+                      <Field
+                        class="form-check-input"
+                        name="slideActive"
+                        type="radio"
+                        :value="1"
+                      />
+                    </div>
+
+                    <div class="form-check form-check-custom form-check-solid gap-2">
+                      <label for="slideActive" class="me-1">{{ $t("option_no") }}</label>
+                      <Field
+                        class="form-check-input"
+                        name="slideActive"
+                        type="radio"
+                        :value="0"
+                      />
+                    </div>
+                  </div>
+                  <ErrorMessage class="invalid-feedback" name="slideActive" />
+                </div>
                 
                 <div class="row mb-5">
                   <div id="cropperWidthTemplate" class="col-md-6 fv-row">
@@ -103,6 +132,7 @@
                       :upload-path="`/slides/${routeId}/upload/photo`"
                       :aspect-ratio="6 / 3"
                       ref="formCropperRef"
+                      @upload-success="handleUploadResponse"
                     />
                   </div>
                 </div>
@@ -161,13 +191,6 @@ const submit = async (values, { setErrors }) => {
   })
     .then((response) => {
       alertStore.setAlertByRes(response);
-      loading.value = true;
-      let oldSlideImgUrl = slideImgUrl.value;
-      slideImgUrl.value = null;
-      setTimeout(() => {
-        loading.value = false;
-        slideImgUrl.value = oldSlideImgUrl?.split('?')[0] + "?time=" + Date.now();
-      }, 4000);
     })
     .catch(({ response }) => {
       alertStore.setAlertByRes(response);
@@ -175,11 +198,15 @@ const submit = async (values, { setErrors }) => {
     });
 };
 
+const handleUploadResponse = (response) => {
+  slideImgUrl.value = response.data.data.newPhotoImgUrl
+};
+
 onMounted(async () => {
   ApiService.get(`/slides/${routeId}`)
     .then(({ data }) => {
       setProperties(data.data, initialValues);
-      slideImgUrl.value = data.data.slide.photoImgUrl + "?time=" + Date.now();;
+      slideImgUrl.value = data.data.slide.photoImgUrl;
       Object.assign(initialValues, {
         slideText: data.data.slide.text.html
       });

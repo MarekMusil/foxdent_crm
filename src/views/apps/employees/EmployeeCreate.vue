@@ -102,21 +102,49 @@
                   </div>
                 </div>
                 <div class="d-flex flex-column mb-5 fv-row">
-                    <label class="fs-5 fw-semobold mb-2">{{ $t("description") }}</label>
-                    <Field
-                      :class="errors.employeeOfficeHours ? 'is-invalid' : ''"
-                      name="employeeOfficeHours"
-                      v-slot="{ handleChange, value }"
-                      as="custom"
-                    >
-                      <TextEditor
-                        :modelValue="value"
-                        :class="errors.employeeOfficeHours ? 'p-invalid' : ''"
-                        @update:modelValue="handleChange"
+                  <label class="fs-5 fw-semobold mb-2">{{ $t("description") }}</label>
+                  <Field
+                    :class="errors.employeeOfficeHours ? 'is-invalid' : ''"
+                    name="employeeOfficeHours"
+                    v-slot="{ handleChange, value }"
+                    as="custom"
+                  >
+                    <TextEditor
+                      :modelValue="value"
+                      :class="errors.employeeOfficeHours ? 'p-invalid' : ''"
+                      @update:modelValue="handleChange"
+                    />
+                  </Field>
+                  <ErrorMessage class="invalid-feedback" name="employeeOfficeHours" />
+                </div>
+                <div class="d-flex flex-column mb-5 fv-row">
+                  <label class="required fs-5 fw-semobold mb-2">{{ $t("active") }}</label>
+                  <div
+                    class="d-flex align-items-center gap-4 form-control"
+                    :class="errors.employeeActive ? 'is-invalid' : ''"
+                  >
+                    <div class="form-check form-check-custom form-check-solid gap-2">
+                      <label for="employeeActive" class="me-1">{{ $t("option_yes") }}</label>
+                      <Field
+                        class="form-check-input"
+                        name="employeeActive"
+                        type="radio"
+                        :value="1"
                       />
-                    </Field>
-                    <ErrorMessage class="invalid-feedback" name="employeeOfficeHours" />
+                    </div>
+
+                    <div class="form-check form-check-custom form-check-solid gap-2">
+                      <label for="employeeActive" class="me-1">{{ $t("option_no") }}</label>
+                      <Field
+                        class="form-check-input"
+                        name="employeeActive"
+                        type="radio"
+                        :value="0"
+                      />
+                    </div>
                   </div>
+                  <ErrorMessage class="invalid-feedback" name="employeeActive" />
+                </div>
           </div>
         </div>
         
@@ -140,7 +168,6 @@ import { useOptionsStore } from "@/stores/options";
 import ApiService from "@/core/services/ApiService";
 import { useAlertStore } from "@/stores/alert";
 import BaseAlert from "@/components/BaseAlert.vue";
-import FormMultiSelect from "@/components/forms/FormMultiSelect.vue";
 import TextEditor from "@/components/forms/TextEditor.vue";
 import { useRouter } from "vue-router";
 

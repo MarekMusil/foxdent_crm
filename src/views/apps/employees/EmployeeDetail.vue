@@ -119,6 +119,36 @@
                   </Field>
                   <ErrorMessage class="invalid-feedback" name="employeeOfficeHours" />
                 </div>
+
+                <div class="d-flex flex-column mb-5 fv-row">
+                  <label class="required fs-5 fw-semobold mb-2">{{ $t("active") }}</label>
+                  <div
+                    class="d-flex align-items-center gap-4 form-control"
+                    :class="errors.employeeActive ? 'is-invalid' : ''"
+                  >
+                    <div class="form-check form-check-custom form-check-solid gap-2">
+                      <label for="employeeActive" class="me-1">{{ $t("option_yes") }}</label>
+                      <Field
+                        class="form-check-input"
+                        name="employeeActive"
+                        type="radio"
+                        :value="1"
+                      />
+                    </div>
+
+                    <div class="form-check form-check-custom form-check-solid gap-2">
+                      <label for="employeeActive" class="me-1">{{ $t("option_no") }}</label>
+                      <Field
+                        class="form-check-input"
+                        name="employeeActive"
+                        type="radio"
+                        :value="0"
+                      />
+                    </div>
+                  </div>
+                  <ErrorMessage class="invalid-feedback" name="employeeActive" />
+                </div>
+
                 <div class="row mb-5">
                   <div id="cropperWidthTemplate" class="col-md-6 fv-row">
                     <label class="fs-5 fw-semobold mb-2">{{ $t("photo") }}</label>
@@ -138,6 +168,7 @@
                     <FormCropper
                       :upload-path="`/employees/${routeId}/upload/photo`"
                       ref="formCropperRef"
+                      @upload-success="handleUploadResponse"
                     />
                   </div>
                 </div>
@@ -196,13 +227,6 @@ const submit = async (values, { setErrors }) => {
   })
     .then((response) => {
       alertStore.setAlertByRes(response)
-      loading.value = true;
-      let oldEmployeeImgUrl = employeeImgUrl.value;
-      employeeImgUrl.value = null;
-      setTimeout(() => {
-        loading.value = false;
-        employeeImgUrl.value = oldEmployeeImgUrl?.split('?')[0] + "?time=" + Date.now();
-      }, 3000);
     })
     .catch(({ response }) => {
       alertStore.setAlertByRes(response);
@@ -210,13 +234,18 @@ const submit = async (values, { setErrors }) => {
     });
 };
 
+const handleUploadResponse = (response) => {
+  employeeImgUrl.value = response.data.data.newPhotoImgUrl
+};
+
 onMounted(async () => {
   ApiService.get(`/employees/${routeId}`)
     .then(({ data }) => {
       setProperties(data.data, initialValues);
-      employeeImgUrl.value = data.data.employee.photoImgUrl + "?time=" + Date.now();
+      employeeImgUrl.value = data.data.employee.photoImgUrl;
       Object.assign(initialValues, {
         employeeType: data.data.employee.type.id,
+        
       });
     })
     .catch(({ response }) => {
