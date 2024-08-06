@@ -69,8 +69,9 @@
                       :class="errors.employeeType ? 'is-invalid' : ''"
                     >
                       <div class="form-check form-check-custom form-check-solid gap-2">
-                        <label for="employeeType" class="me-1">{{ $t("Stomatologie") }}</label>
+                        <label for="employeeType1" class="me-1">{{ $t("Stomatologie") }}</label>
                         <Field
+                          id="employeeType1"
                           class="form-check-input"
                           name="employeeType"
                           type="radio"
@@ -78,12 +79,23 @@
                         />
                       </div>
                       <div class="form-check form-check-custom form-check-solid gap-2">
-                        <label for="employeeType" class="me-1">{{ $t("Dentální hygiena") }}</label>
+                        <label for="employeeType2" class="me-1">{{ $t("Dentální hygiena") }}</label>
                         <Field
+                          id="employeeType2"
                           class="form-check-input"
                           name="employeeType"
                           type="radio"
                           :value="2"
+                        />
+                      </div>
+                      <div class="form-check form-check-custom form-check-solid gap-2">
+                        <label for="employeeType3" class="me-1">{{ $t("Zubní instrumentářky") }}</label>
+                        <Field
+                          id="employeeType3"
+                          class="form-check-input"
+                          name="employeeType"
+                          type="radio"
+                          :value="3"
                         />
                       </div>
                     </div>
