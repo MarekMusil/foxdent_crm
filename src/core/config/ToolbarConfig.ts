@@ -1,16 +1,16 @@
 const ToolbarConfig: {
   [key: string]: string;
 } = {
-  Faktury: "/invoices",
-  Nabídky: "/offers",
-  Nákupní: "/orders/purchase",
-  Objednávky: "/orders",
-  "Pokladní doklady": "/cashdesks/receipts",
-  "Skladové karty": "/stock/cards",
-  "Skladové položky": "/stock/items",
-  Úkoly: "/tasks",
   Uživatelé: "/settings/users",
-  Zákazníci: "/customers",
+  Kontakt: "/settings/contact",
+  Pojišťovny: "/settings/insurances",
+  Zaměstnanci: "/employees",
+  Prezentace: "/slides",
+  Ceník: "/pricelists",
+  Služby: "/services",
+  Technologie: "/technologies",
+  Reference: "/ratings",
+  Texty: "/texts",
 };
 
 export default ToolbarConfig;
