@@ -90,8 +90,9 @@
                     :class="errors.slideActive ? 'is-invalid' : ''"
                   >
                     <div class="form-check form-check-custom form-check-solid gap-2">
-                      <label for="slideActive" class="me-1">{{ $t("option_yes") }}</label>
+                      <label for="slideActiveYes" class="me-1">{{ $t("option_yes") }}</label>
                       <Field
+                        id="slideActiveYes"
                         class="form-check-input"
                         name="slideActive"
                         type="radio"
@@ -100,8 +101,9 @@
                     </div>
 
                     <div class="form-check form-check-custom form-check-solid gap-2">
-                      <label for="slideActive" class="me-1">{{ $t("option_no") }}</label>
+                      <label for="slideActiveNo" class="me-1">{{ $t("option_no") }}</label>
                       <Field
+                        id="slideActiveNo"
                         class="form-check-input"
                         name="slideActive"
                         type="radio"
