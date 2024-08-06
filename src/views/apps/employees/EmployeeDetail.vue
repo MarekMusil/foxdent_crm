@@ -70,7 +70,7 @@
                       :class="errors.employeeType ? 'is-invalid' : ''"
                     >
                       <div class="form-check form-check-custom form-check-solid gap-2">
-                        <label for="employeeType" class="me-1">{{ $t("Stomatologie") }}</label>
+                        <label for="employeeType1" class="me-1">{{ $t("Stomatologie") }}</label>
                         <Field
                           id="employeeType1"
                           class="form-check-input"
