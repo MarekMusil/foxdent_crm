@@ -68,7 +68,7 @@
                       class="d-flex align-items-center gap-4 form-control"
                       :class="errors.employeeType ? 'is-invalid' : ''"
                     >
-                      <div class="form-check form-check-custom form-check-solid gap-2">
+                    <div class="form-check form-check-custom form-check-solid gap-2">
                         <label for="employeeType1" class="me-1">{{ $t("Stomatologie") }}</label>
                         <Field
                           id="employeeType1"
@@ -157,6 +157,30 @@
                   </div>
                   <ErrorMessage class="invalid-feedback" name="employeeActive" />
                 </div>
+
+                <div class="row mb-5">
+                  <div id="cropperWidthTemplate" class="col-md-6 fv-row">
+                    <label class="fs-5 fw-semobold mb-2">{{ $t("photo") }}</label>
+                    <div class="width-100">
+                      <img
+                        v-if="employeeImgUrl"
+                        class="border border-secondary rounded p-3"
+                        :src="employeeImgUrl"
+                        alt="employee image"
+                        width="300px"
+                      />
+                    </div>
+                    <Loading v-if="loading"/>
+                  </div>
+                  <div class="col-md-6 fv-row">
+                    <label class="fs-5 fw-semobold mb-2">{{ $t("new_photo") }}</label>
+                    <FormCropper
+                      :upload-path="`/employees/upload/photo`"
+                      ref="formCropperRef"
+                      @upload-success="handleUploadResponse"
+                    />
+                  </div>
+                </div>
           </div>
         </div>
         
@@ -182,21 +206,42 @@ import { useAlertStore } from "@/stores/alert";
 import BaseAlert from "@/components/BaseAlert.vue";
 import TextEditor from "@/components/forms/TextEditor.vue";
 import { useRouter } from "vue-router";
+import { ref } from "vue";
+import Loading from "@/components/datatable/table-partials/LoadingTransparent.vue";
+import FormCropper from "@/components/forms/FormCropper.vue";
 
 const router = useRouter();
 const store = useOptionsStore();
 const alertStore = useAlertStore();
 
+const employeeImgUrl = ref<string | null>(null);
+const employeePhotoTransaction = ref<string | null>(null);
+const formCropperRef = ref<InstanceType<typeof FormCropper> | null>(null);
+const loading = ref(false);
+
 const validationSchema = Yup.object().shape({
- /*  userName: Yup.string().required(),
-  userRoleId: Yup.string().required(),
-  userEmail: Yup.string().required(),
-  userPin: Yup.string().required(),
-  userIsActive: Yup.string().required(), */
 });
 
-const submit = (values, { resetForm, setErrors }) => {
-  ApiService.post("/employees", values)
+const handleUploadResponse = (response) => {
+  console.log(response.data.data.employeePhotoTransaction);
+  employeeImgUrl.value = response.data.data.photoImgUrl;
+  employeePhotoTransaction.value = response.data.data.employeePhotoTransaction
+};
+
+const submit = async (values, { resetForm, setErrors }) => {
+  if (formCropperRef.value) {
+    try {
+      const response = await formCropperRef.value.uploadFiles();
+      handleUploadResponse(response);
+    } catch (error) {
+      console.error(error);
+      return;
+    }
+  }
+  ApiService.post("/employees", {
+    ...values,
+    employeePhotoTransaction: employeePhotoTransaction.value,
+  })
     .then((response) => {
       alertStore.setAlertByRes(response);
       resetForm();
