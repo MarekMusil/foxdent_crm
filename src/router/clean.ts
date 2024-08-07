@@ -66,7 +66,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/apps/users/UsersList.vue"),
         meta: {
           pageTitle: "Seznam uživatelů",
-          breadcrumbs: ["Uživatelé", "Seznam"],
+          breadcrumbs: ["Uživatelé"],
         },
       },
       {
@@ -94,7 +94,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/apps/employees/EmployeeList.vue"),
         meta: {
           pageTitle: "Seznam zaměstnanců",
-          breadcrumbs: ["Zaměstnanci", "Seznam"],
+          breadcrumbs: ["Zaměstnanci"],
         },
       },
       {
@@ -122,7 +122,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/apps/slides/SlideList.vue"),
         meta: {
           pageTitle: "Seznam stránek prezentace",
-          breadcrumbs: ["Prezentace", "Seznam"],
+          breadcrumbs: ["Prezentace"],
         },
       },
       {
@@ -150,7 +150,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/apps/pricelists/PricelistDetail.vue"),
         meta: {
           pageTitle: "Ceník",
-          breadcrumbs: ["Ceník", "Seznam"],
+          breadcrumbs: ["Ceník"],
         },
       },
       // PRICELISTS
@@ -160,7 +160,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/apps/services/ServiceDetail.vue"),
         meta: {
           pageTitle: "Služby",
-          breadcrumbs: ["Služby", "Seznam"],
+          breadcrumbs: ["Služby"],
         },
       },
       // PRICELISTS
@@ -170,7 +170,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/apps/technologies/TechnologyDetail.vue"),
         meta: {
           pageTitle: "Technologie",
-          breadcrumbs: ["Technologie", "Seznam"],
+          breadcrumbs: ["Technologie"],
         },
       },
       // RATINGS
@@ -180,7 +180,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/apps/ratings/RatingDetail.vue"),
         meta: {
           pageTitle: "Reference",
-          breadcrumbs: ["Reference", "Seznam"],
+          breadcrumbs: ["Reference"],
         },
       },
       // TEXTS
@@ -190,7 +190,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/apps/texts/TextList.vue"),
         meta: {
           pageTitle: "Seznam textů",
-          breadcrumbs: ["Texty", "Seznam"],
+          breadcrumbs: ["Texty"],
         },
       },
       {
@@ -228,7 +228,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/apps/insurance/InsuranceDetail.vue"),
         meta: {
           pageTitle: "Pojišťovny",
-          breadcrumbs: ["Pojišťovny", "Seznam"],
+          breadcrumbs: ["Pojišťovny"],
         },
       },
       ],
