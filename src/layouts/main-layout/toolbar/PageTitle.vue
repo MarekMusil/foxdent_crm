@@ -25,7 +25,7 @@
       >
         <!--begin::Item-->
         <li class="breadcrumb-item text-muted">
-          <router-link to="/" class="text-muted text-hover-primary">FOXDENT</router-link>
+          <span class="text-muted">FOXDENT</span>
         </li>
         <!--end::Item-->
         <template v-for="(item, i) in breadcrumbs" :key="i">
