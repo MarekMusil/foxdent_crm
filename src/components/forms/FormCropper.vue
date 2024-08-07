@@ -90,6 +90,7 @@ onMounted(() => {
 <template>
   <div class="d-grid gap-2">
     <PrimeFileUpload
+      class="mb-10"
       name="files"
       mode="basic"
       accept="image/*"
