@@ -36,9 +36,12 @@
           <!--end::Item-->
           <!--begin::Item-->
           <li class="breadcrumb-item text-muted">
-            <router-link :to="pageUrl(item) || ''" class="text-muted text-hover-primary">
+            <router-link v-if="i !== breadcrumbs.length - 1" :to="pageUrl(item) || ''" class="text-muted text-hover-primary">
               {{ item }}
             </router-link>
+            <span v-else class="text-muted">
+              {{ item }}
+            </span>
           </li>
           <!--end::Item-->
         </template>
