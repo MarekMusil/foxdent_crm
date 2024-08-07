@@ -69,8 +69,8 @@ const pageTitle = computed(() => {
   return route.meta.pageTitle;
 });
 
-const breadcrumbs = computed(() => {
-  return route.meta.breadcrumbs;
+const breadcrumbs = computed<string[]>((): string[] => {
+  return route.meta.breadcrumbs as string[];
 });
 
 const pageUrl = (breadcrumb: string): string | undefined => {
