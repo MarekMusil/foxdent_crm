@@ -532,6 +532,10 @@ const messages = {
     all: "Vše",
     inactive: "Neaktivní",
     choose_service: "Vyberte službu",
+
+    important_message_name: "Název důležitého sdělení",
+    important_message_content: "Obsah důležitého sdělení",
+    important_message_is_visible: "Zobrazovat důležité sdělení",
   },
 };
 

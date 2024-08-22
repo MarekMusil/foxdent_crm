@@ -222,6 +222,17 @@ const routes: Array<RouteRecordRaw> = [
           breadcrumbs: ["Kontakt", "Detail"],
         },
       },
+      // IMPORTANT MESSAGE
+      {
+        path: "/settings/important-message",
+        name: "important-message",
+        component: () => import("@/views/apps/importantMessage/importantMessageDetail.vue"),
+        meta: {
+          pageTitle: "Důležité sdělení",
+          breadcrumbs: ["Důležité sdělení", "Detail"],
+        },
+      },
+      // INSURANCES
       {
         path: "/settings/insurances",
         name: "insurances",
