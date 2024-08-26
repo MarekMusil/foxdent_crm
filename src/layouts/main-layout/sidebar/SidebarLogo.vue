@@ -3,26 +3,28 @@
   <div class="app-sidebar-logo px-4" id="kt_app_sidebar_logo">
     <!--begin::Logo image-->
     <router-link to="/">
-      <!-- <img
+      <img
         v-if="
           layout === 'dark-sidebar' ||
           (themeMode === 'dark' && layout === 'light-sidebar')
         "
         alt="Logo"
-        src="/media/logos/default-dark.png"
-        class="h-15px app-sidebar-logo-default"
+        width="130px"
+        src="/media/logos/default.png"
+        class="app-sidebar-logo-default"
       />
       <img
         v-if="themeMode === 'light' && layout === 'light-sidebar'"
         alt="Logo"
-        src="/media/logos/default.png"
-        class="h-15px app-sidebar-logo-default"
+        src="/media/logos/default-dark.png"
+        class="app-sidebar-logo-default"
       />
       <img
         alt="Logo"
-        src="/media/logos/default-dark.png"
-        class="h-15px app-sidebar-logo-minimize"
-      /> -->
+        width="45px"
+        src="/media/logos/default-symbol.png"
+        class="app-sidebar-logo-minimize"
+      />
     </router-link>
     <!--end::Logo image-->
     <!--begin::Sidebar toggle-->

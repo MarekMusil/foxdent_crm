@@ -29,24 +29,25 @@
                         label: 'Pořadí',
                         dataKey: 'rank',
                         type: 'number',
-                        width: 80
+                        width: '100px',
                       },
                       {
                         label: 'Název',
                         dataKey: 'name',
                         type: 'text',
-                        width: 400
+                        width: '500px',
                       },
                       {
                         label: '',
                         dataKey: 'img',
                         type: 'img',
+                        width: '50px',
                       },
                       {
                         label: 'Aktivní',
                         dataKey: 'active',
                         type: 'radio',
-                        width: 1
+                        width: '150px',
                       },
                     ]"
                   />

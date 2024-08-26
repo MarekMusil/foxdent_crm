@@ -28,13 +28,13 @@
                         label: 'Pořadí',
                         dataKey: 'rank',
                         type: 'number',
-                        width: 80
+                        width: '100px',
                       },
                       {
                         label: 'Název',
                         dataKey: 'name',
                         type: 'text',
-                        width: 500
+                        width: '800px',
                       },
                       {
                         label: 'Logo',
@@ -45,7 +45,6 @@
                         label: 'Aktivní',
                         dataKey: 'active',
                         type: 'radio',
-                        width: 1
                       },
                     ]"
                   />

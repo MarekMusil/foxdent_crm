@@ -19,7 +19,7 @@ const props = defineProps<{
   options: {
     label: string;
     dataKey: string;
-    width?: number;
+    width?: string;
     type?:
       | "text"
       | "number"
@@ -126,8 +126,7 @@ const getError = (index: number, key: string): string | undefined => {
             v-for="(option, colI) in options"
             :key="colI"
             class="pb-2 px-1"
-            :width="option.width"
-            :style="getBorderColor(index, colI)"
+            :style="{ ...getBorderColor(index, colI), width: option.width }"
           >
             <input
               v-if="option.type === 'text' || !option.type"
@@ -246,28 +245,32 @@ const getError = (index: number, key: string): string | undefined => {
             />
             <span class="alert-danger">{{ getError(index, option.dataKey) }}</span>
           </td>
-          <td v-if="!optionsDisabled" class="d-flex justify-content-end gap-2 pb-2 ps-20">
-            <router-link 
-              v-if="withLinkForDetail && props.modelValue[index]?.link" 
-              class="cursor-pointer btn btn-light" 
+          <td v-if="!optionsDisabled" class="d-flex justify-content-end gap-2 pb-2 ps-20" style="white-space: nowrap;">
+            <router-link
+              v-if="withLinkForDetail && props.modelValue[index]?.link"
+              class="cursor-pointer btn btn-light"
               :to="props.modelValue[index].link"
             >
-            Upravit text
+              Upravit text
             </router-link>
             <a class="cursor-pointer btn btn-success mr-2" @click="addItem">
               <i class="bi bi-plus fs-1"></i>
             </a>
-            <a v-if="!withoutDeleteButton" class="cursor-pointer btn btn-danger" @click="removeItem(index)">
+            <a
+              v-if="!withoutDeleteButton"
+              class="cursor-pointer btn btn-danger"
+              @click="removeItem(index)"
+            >
               <i class="bi bi-trash fs-3"></i>
             </a>
           </td>
-          <td v-else class="d-flex justify-content-end gap-2 pb-2 ps-20">
-            <router-link 
-              v-if="withLinkForDetail && props.modelValue[index]?.link" 
-              class="cursor-pointer btn btn-light" 
+          <td v-else class="d-flex justify-content-end gap-2 pb-2 ps-20" style="white-space: nowrap;">
+            <router-link
+              v-if="withLinkForDetail && props.modelValue[index]?.link"
+              class="cursor-pointer btn btn-light"
               :to="props.modelValue[index].link"
             >
-            Upravit text
+              Upravit text
             </router-link>
           </td>
         </tr>

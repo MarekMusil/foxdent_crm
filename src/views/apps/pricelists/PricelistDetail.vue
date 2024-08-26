@@ -27,22 +27,25 @@
                         label: 'Pořadí',
                         dataKey: 'rank',
                         type: 'number',
-                        width: 80
+                        width: 'calc(10%)',
                       },
                       {
                         label: 'Název',
                         dataKey: 'name',
                         type: 'text',
+                        width: 'calc(40%)',
                       },
                       {
                         label: 'Cena',
                         dataKey: 'price',
                         type: 'text',
+                        width: 'calc(20%)',
                       },
                       {
                         label: 'Poznámka',
                         dataKey: 'note',
                         type: 'text',
+                        width: 'calc(20%)',
                       },
                     ]"
                   />

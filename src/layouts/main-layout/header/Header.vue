@@ -17,7 +17,7 @@
           <img
             v-if="themeMode === 'light' && layout === 'light-header'"
             alt="Logo"
-            src="/media/logos/default.png"
+            src="/media/logos/default-symbol.png"
             class="h-20px h-lg-30px app-sidebar-logo-default theme-light-show"
           />
           <img
@@ -26,7 +26,7 @@
               (themeMode === 'dark' && layout === 'light-header')
             "
             alt="Logo"
-            src="/media/logos/default-dark.png"
+            src="/media/logos/default-symbol-dark.png"
             class="h-20px h-lg-30px app-sidebar-logo-default"
           />
         </router-link>

@@ -27,18 +27,19 @@
                         label: 'Pořadí',
                         dataKey: 'rank',
                         type: 'number',
-                        width: 80
+                        width: 'calc(10%)',
                       },
                       {
                         label: 'Název',
                         dataKey: 'name',
                         type: 'text',
+                        width: 'calc(20%)',
                       },
                       {
                         label: 'Text',
                         dataKey: 'text',
                         type: 'text',
-                        width: 400,
+                        width: 'calc(60%)',
                       },
                     ]"
                   />
