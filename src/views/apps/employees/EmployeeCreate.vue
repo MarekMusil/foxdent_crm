@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="row mb-5">
-                  <div class="col-md-6 fv-row">
+                  <div class="col-md-5 fv-row">
                         <label class="fs-5 fw-semobold mb-2">{{ $t("education") }}</label>
                         <Field
                           class="form-control"
@@ -62,7 +62,7 @@
                         />
                         <ErrorMessage class="invalid-feedback" name="employeeEducation" />
                   </div>
-                  <div class="col-md-5 fv-row">
+                  <div class="col-md-6 fv-row">
                     <label class="fs-5 fw-semobold mb-2">{{ $t("type") }}</label>
                     <div
                       class="d-flex align-items-center gap-4 form-control"
@@ -96,6 +96,16 @@
                           name="employeeType"
                           type="radio"
                           :value="3"
+                        />
+                      </div>
+                      <div class="form-check form-check-custom form-check-solid gap-2">
+                        <label for="employeeType4" class="me-1">{{ $t("Ostatní") }}</label>
+                        <Field
+                          id="employeeType4"
+                          class="form-check-input"
+                          name="employeeType"
+                          type="radio"
+                          :value="4"
                         />
                       </div>
                     </div>
