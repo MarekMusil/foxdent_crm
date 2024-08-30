@@ -536,6 +536,10 @@ const messages = {
     important_message_name: "Název důležitého sdělení",
     important_message_content: "Obsah důležitého sdělení",
     important_message_is_visible: "Zobrazovat důležité sdělení",
+
+    meta_title: "Meta titulek",
+    meta_description: "Meta popis",
+    meta_keywords: "Meta klíčová slova",
   },
 };
 

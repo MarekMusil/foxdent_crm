@@ -211,6 +211,45 @@ const routes: Array<RouteRecordRaw> = [
           breadcrumbs: ["Texty", "Detail"],
         },
       },
+      //PAGES
+      //PAGE STRUCTURE
+      {
+        path: "/pages/structure",
+        name: "pages-structure",
+        component: () => import("@/views/apps/pages/PageStructureDetail.vue"),
+        meta: {
+          pageTitle: "Seznam stránek",
+          breadcrumbs: ["Seznam stránek"],
+        },
+      },
+      //PAGE TEXTS
+      {
+        path: "/pages/texts",
+        name: "pages-texts",
+        component: () => import("@/views/apps/pages/PageTextList.vue"),
+        meta: {
+          pageTitle: "Texty stránek",
+          breadcrumbs: ["Texty stránek"],
+        },
+      },
+      {
+        path: "/pages/texts/create",
+        name: "pages-texts-create",
+        component: () => import("@/views/apps/pages/PageTextCreate.vue"),
+        meta: {
+          pageTitle: "Nový text stránky",
+          breadcrumbs: ["Texty stránek", "Nový"],
+        },
+      },
+      {
+        path: "/pages/texts/:id",
+        name: "pages-texts-detail",
+        component: () => import("@/views/apps/pages/PageTextDetail.vue"),
+        meta: {
+          pageTitle: "Detail textu stránky",
+          breadcrumbs: ["Texty stránek", "Detail"],
+        },
+      },
       //SETTINGS
       // CONTACT
       {
