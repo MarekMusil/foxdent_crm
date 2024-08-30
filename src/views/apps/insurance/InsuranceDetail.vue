@@ -1,12 +1,7 @@
 <template>
   <div class="flex-lg-row-fluid me-lg-15 order-2 order-lg-1 mb-10 mb-lg-0">
     <div class="card card-flush pt-3 mb-5 mb-lg-10">
-      <div class="card-header">
-        <div class="card-title">
-          <h2 class="fw-bold">Úprava pojištoven</h2>
-        </div>
-      </div>
-      <div class="card-body pt-0">
+      <div class="card-body pt-0 mt-10">
         <VForm
           class="form"
           @submit="submit"

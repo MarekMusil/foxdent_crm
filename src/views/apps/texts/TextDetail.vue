@@ -1,12 +1,7 @@
 <template>
   <div class="flex-lg-row-fluid me-lg-15 order-2 order-lg-1 mb-10 mb-lg-0">
     <div class="card card-flush pt-3 mb-5 mb-lg-10">
-      <div class="card-header">
-        <div class="card-title">
-          <h2 class="fw-bold">Detail textu</h2>
-        </div>
-      </div>
-      <div class="card-body pt-0">
+      <div class="card-body pt-0 mt-10">
         <VForm
           class="form"
           @submit="submit"
@@ -116,6 +111,39 @@
                   </div>
                 </div>
 
+                <div v-if="values.textType == 1 || values.textType == 2" class="row mb-5">
+                  <div class="col-md-4 fv-row">
+                        <label class="fs-5 fw-semobold mb-2">{{ $t("meta_title") }}</label>
+                        <Field
+                          class="form-control"
+                          :class="errors.textMetaTitle ? 'is-invalid' : ''"
+                          name="textMetaTitle"
+                          :placeholder="$t('enter_text')"
+                        />
+                        <ErrorMessage class="invalid-feedback" name="textMetaTitle" />
+                  </div>
+                  <div class="col-md-4 fv-row">
+                        <label class="fs-5 fw-semobold mb-2">{{ $t("meta_description") }}</label>
+                        <Field
+                          class="form-control"
+                          :class="errors.textMetaDescription ? 'is-invalid' : ''"
+                          name="textMetaDescription"
+                          :placeholder="$t('enter_text')"
+                        />
+                        <ErrorMessage class="invalid-feedback" name="textMetaDescription" />
+                  </div>
+                  <div class="col-md-4 fv-row">
+                        <label class="fs-5 fw-semobold mb-2">{{ $t("meta_keywords") }}</label>
+                        <Field
+                          class="form-control"
+                          :class="errors.textMetaKeywords ? 'is-invalid' : ''"
+                          name="textMetaKeywords"
+                          :placeholder="$t('enter_text')"
+                        />
+                        <ErrorMessage class="invalid-feedback" name="textMetaKeywords" />
+                  </div>
+                </div>
+
                 <div class="d-flex flex-column mb-5 fv-row">
                   <label class="fs-5 fw-semobold mb-2">{{ $t("content") }}</label>
                   <Field
@@ -191,9 +219,6 @@ onMounted(async () => {
     .then(({ data }) => {
       setProperties(data.data, initialValues);
       employeeImgUrl.value = data.data.employee.photoImgUrl;
-      Object.assign(initialValues, {
-        employeeType: data.data.employee.type.id,
-      });
     })
     .catch(({ response }) => {
       alertStore.setAlertByRes(response);
