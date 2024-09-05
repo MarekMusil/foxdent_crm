@@ -160,6 +160,31 @@
                   </Field>
                   <ErrorMessage class="invalid-feedback" name="textContent" />
                 </div>
+
+                <div v-if="values.textType == 2" class="row mb-5">
+                  <div id="cropperWidthTemplate" class="col-md-6 fv-row">
+                    <label class="fs-5 fw-semobold mb-2">{{ $t("photo") }}</label>
+                    <div class="width-100">
+                      <img
+                        v-if="technologyImgUrl"
+                        class="border border-secondary rounded p-3"
+                        :src="technologyImgUrl"
+                        alt="technology image"
+                        width="300px"
+                      />
+                    </div>
+                    <Loading v-if="loading"/>
+                  </div>
+                  <div class="col-md-6 fv-row">
+                    <label class="fs-5 fw-semobold mb-2">{{ $t("new_photo") }}</label>
+                    <FormCropper
+                      :upload-path="`/texts/technologies/${routeId}/upload/photo`"
+                      :aspect-ratio="19 / 9"
+                      ref="formCropperRef"
+                      @upload-success="handleUploadResponse"
+                    />
+                  </div>
+                </div>
           </div>
         </div>
         
@@ -187,21 +212,28 @@ import { useRoute } from "vue-router";
 import { onMounted, reactive, ref } from "vue";
 import { setProperties } from "@/utils/update";
 import TextEditor from "@/components/forms/TextEditor.vue";
+import FormCropper from "@/components/forms/FormCropper.vue";
+import Loading from "@/components/datatable/table-partials/LoadingTransparent.vue";
 
 const store = useOptionsStore();
 const alertStore = useAlertStore();
 const route = useRoute();
 const routeId = route.params.id as string;
 
+const loading = ref(false);
+
 const itemValues = ref<any[]>([]);
 const initialValues = reactive<{ [key: string]: any }>({});
-const employeeImgUrl = ref<string | null>(null);
-
+const technologyImgUrl = ref<string | null>(null);
+const formCropperRef = ref<InstanceType<typeof FormCropper> | null>(null);
 
 const validationSchema = Yup.object().shape({
 });
 
 const submit = async (values, { setErrors }) => {
+  if (formCropperRef.value) {
+    formCropperRef.value.uploadFiles();
+  }
   ApiService.put(`/texts/${routeId}`, {
     ...values,
   })
@@ -214,11 +246,15 @@ const submit = async (values, { setErrors }) => {
     });
 };
 
+const handleUploadResponse = (response) => {
+  technologyImgUrl.value = response.data.data.newPhotoImgUrl
+};
+
 onMounted(async () => {
   ApiService.get(`/texts/${routeId}`)
     .then(({ data }) => {
       setProperties(data.data, initialValues);
-      employeeImgUrl.value = data.data.employee.photoImgUrl;
+      technologyImgUrl.value = data.data.text.photoImgUrl;
     })
     .catch(({ response }) => {
       alertStore.setAlertByRes(response);
