@@ -193,6 +193,8 @@ onMounted(async () => {
     .then(({ data }) => {
       setProperties(data.data, initialValues);
       Object.assign(initialValues, {
+        contactDataPhone1: data.data.contactData.phone1Format,
+        contactDataPhone2: data.data.contactData.phone2Format,
       });
     })
     .catch(({ response }) => {
