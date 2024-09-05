@@ -104,6 +104,9 @@ onMounted(async () => {
         rank: item.rank,
         link: item.linkForCrm,
         active: item.active.value,
+        disabled: {
+          active: true,
+        },
       }));
     })
     .catch(({ response }) => {
