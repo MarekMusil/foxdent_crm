@@ -24,17 +24,7 @@
                         />
                         <ErrorMessage class="invalid-feedback" name="employeeName" />
                   </div>
-                  <div class="col-md-2 fv-row">
-                        <label class="fs-5 fw-semobold mb-2">{{ $t("degree") }}</label>
-                        <Field
-                          class="form-control"
-                          :class="errors.employeeDegree ? 'is-invalid' : ''"
-                          name="employeeDegree"
-                          :placeholder="$t('enter_text')"
-                        />
-                        <ErrorMessage class="invalid-feedback" name="employeeDegree" />
-                  </div>
-                  <div class="col-md-4 fv-row">
+                  <div class="col-md-5 fv-row">
                         <label class="fs-5 fw-semobold mb-2">{{ $t("work") }}</label>
                         <Field
                           class="form-control"
@@ -44,10 +34,21 @@
                         />
                         <ErrorMessage class="invalid-feedback" name="employeeText" />
                   </div>
+                  <div class="col-md-1 fv-row">
+                        <label class="fs-5 fw-semobold mb-2">{{ $t("rank") }}</label>
+                        <Field
+                          class="form-control"
+                          :class="errors.employeeRank ? 'is-invalid' : ''"
+                          name="employeeRank"
+                          type="number"
+                          :placeholder="$t('enter_number')"
+                        />
+                        <ErrorMessage class="invalid-feedback" name="employeeRank" />
+                  </div>
                 </div>
 
                 <div class="row mb-5">
-                  <div class="col-md-5 fv-row">
+                  <div class="col-md-6 fv-row">
                         <label class="fs-5 fw-semobold mb-2">{{ $t("education") }}</label>
                         <Field
                           class="form-control"
@@ -106,17 +107,6 @@
                     </div>
                     <ErrorMessage class="invalid-feedback" name="employeeType" />
                   </div>
-                  <div class="col-md-1 fv-row">
-                        <label class="fs-5 fw-semobold mb-2">{{ $t("rank") }}</label>
-                        <Field
-                          class="form-control"
-                          :class="errors.employeeRank ? 'is-invalid' : ''"
-                          name="employeeRank"
-                          type="number"
-                          :placeholder="$t('enter_number')"
-                        />
-                        <ErrorMessage class="invalid-feedback" name="employeeRank" />
-                  </div>
                 </div>
                 <div class="d-flex flex-column mb-5 fv-row">
                   <label class="fs-5 fw-semobold mb-2">{{ $t("description") }}</label>
@@ -134,33 +124,63 @@
                   </Field>
                   <ErrorMessage class="invalid-feedback" name="employeeOfficeHours" />
                 </div>
-                <div class="d-flex flex-column mb-5 fv-row">
-                  <label class="required fs-5 fw-semobold mb-2">{{ $t("active") }}</label>
-                  <div
-                    class="d-flex align-items-center gap-4 form-control"
-                    :class="errors.employeeActive ? 'is-invalid' : ''"
-                  >
-                    <div class="form-check form-check-custom form-check-solid gap-2">
-                      <label for="employeeActive" class="me-1">{{ $t("option_yes") }}</label>
-                      <Field
-                        class="form-check-input"
-                        name="employeeActive"
-                        type="radio"
-                        :value="1"
-                      />
-                    </div>
+                <div class="row mb-5">
+                  <div class="col-md-6 fv-row">
+                    <label class="required fs-5 fw-semobold mb-2">{{ $t("use_photo") }}</label>
+                    <div
+                      class="d-flex align-items-center gap-4 form-control"
+                      :class="errors.employeeUsePhoto ? 'is-invalid' : ''"
+                    >
+                      <div class="form-check form-check-custom form-check-solid gap-2">
+                        <label for="employeeUsePhoto" class="me-1">{{ $t("option_yes") }}</label>
+                        <Field
+                          class="form-check-input"
+                          name="employeeUsePhoto"
+                          type="radio"
+                          :value="1"
+                        />
+                      </div>
 
-                    <div class="form-check form-check-custom form-check-solid gap-2">
-                      <label for="employeeActive" class="me-1">{{ $t("option_no") }}</label>
-                      <Field
-                        class="form-check-input"
-                        name="employeeActive"
-                        type="radio"
-                        :value="0"
-                      />
+                      <div class="form-check form-check-custom form-check-solid gap-2">
+                        <label for="employeeUsePhoto" class="me-1">{{ $t("option_no") }}</label>
+                        <Field
+                          class="form-check-input"
+                          name="employeeUsePhoto"
+                          type="radio"
+                          :value="0"
+                        />
+                      </div>
                     </div>
+                    <ErrorMessage class="invalid-feedback" name="employeeUsePhoto" />
                   </div>
-                  <ErrorMessage class="invalid-feedback" name="employeeActive" />
+                  <div class="col-md-6 fv-row">
+                    <label class="required fs-5 fw-semobold mb-2">{{ $t("active") }}</label>
+                    <div
+                      class="d-flex align-items-center gap-4 form-control"
+                      :class="errors.employeeActive ? 'is-invalid' : ''"
+                    >
+                      <div class="form-check form-check-custom form-check-solid gap-2">
+                        <label for="employeeActive" class="me-1">{{ $t("option_yes") }}</label>
+                        <Field
+                          class="form-check-input"
+                          name="employeeActive"
+                          type="radio"
+                          :value="1"
+                        />
+                      </div>
+
+                      <div class="form-check form-check-custom form-check-solid gap-2">
+                        <label for="employeeActive" class="me-1">{{ $t("option_no") }}</label>
+                        <Field
+                          class="form-check-input"
+                          name="employeeActive"
+                          type="radio"
+                          :value="0"
+                        />
+                      </div>
+                    </div>
+                    <ErrorMessage class="invalid-feedback" name="employeeActive" />
+                  </div>
                 </div>
 
                 <div class="row mb-5">
@@ -251,7 +271,7 @@ const submit = async (values, { resetForm, setErrors }) => {
     .then((response) => {
       alertStore.setAlertByRes(response);
       resetForm();
-      router.push(response.data.data.redirectUrl);
+      router.push(response.data?.data?.redirectUrl);
     })
     .catch(({ response }) => {
       alertStore.setAlertByRes(response);
