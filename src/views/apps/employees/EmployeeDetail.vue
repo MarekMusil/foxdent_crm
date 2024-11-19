@@ -184,6 +184,7 @@
                     <label class="fs-5 fw-semobold mb-2">{{ $t("new_photo") }}</label>
                     <FormCropper
                       :upload-path="`/employees/${routeId}/upload/photo`"
+                      :aspect-ratio="5 / 6"
                       ref="formCropperRef"
                       @upload-success="handleUploadResponse"
                     />
