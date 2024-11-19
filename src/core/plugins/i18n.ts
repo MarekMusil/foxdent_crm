@@ -8,6 +8,7 @@ const messages = {
     layoutBuilder: "Tvůrce rozložení",
     craft: "Vytvořeno",
     pages: "Stránky",
+    page: "Stránka",
     profile: "Profil",
     profileOverview: "Přehled",
     projects: "Projekty",
@@ -476,7 +477,7 @@ const messages = {
     user_account_name: "Název účtu",
     time: "Čas",
     material: "Materiál",
-    work: "Práce",
+    work: "Pozice",
     search_vehicle_database: "Vyhledávání v databázi vozidel",
 
     doc_type: "Typ dokladu",
@@ -540,6 +541,9 @@ const messages = {
     meta_title: "Meta titulek",
     meta_description: "Meta popis",
     meta_keywords: "Meta klíčová slova",
+    use_photo: "Použít fotku",
+
+    name: "Název"
   },
 };
 
